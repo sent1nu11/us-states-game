@@ -21,7 +21,7 @@ while len(guessed_states) < 50:
     if answer_state == "Exit":
         break
 
-    if answer_state.capitalize() in all_states:
+    if answer_state in all_states:
         guessed_states.append(answer_state)
         t = turtle.Turtle()
         t.hideturtle()
@@ -31,6 +31,9 @@ while len(guessed_states) < 50:
         t.write(answer_state)
 
 # states to learn.csv
+missed_states = set(all_states).difference(guessed_states)
+print(missed_states)
+
 
 
 menu_title = correct_answer_count
