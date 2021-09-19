@@ -18,6 +18,8 @@ guessed_states = []
 
 while len(guessed_states) < 50:
     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="What's another state's name?").title()
+    if answer_state == "Exit":
+        break
 
     if answer_state.capitalize() in all_states:
         guessed_states.append(answer_state)
@@ -27,12 +29,10 @@ while len(guessed_states) < 50:
         state_data = data_frame[data_frame.state == answer_state]
         t.goto(int(state_data["x"]), int(state_data["y"]))
         t.write(answer_state)
-        correct_answer_count = +1
 
+# states to learn.csv
 
-screen.listen()
 
 menu_title = correct_answer_count
 
 
-screen.exitonclick()
